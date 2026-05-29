@@ -1,0 +1,128 @@
+body {
+    /* Removed 2cm margin to prevent clipping on small screens */
+    margin: 0; 
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Changed to min-height for better scroll behavior if needed */
+    background-color: #f8f7f7;
+    box-sizing: border-box;
+}
+
+.calculator {
+    font-family: 'Arial', sans-serif;
+    background-color: #1d1a1a;
+    border-radius: 15px;
+    width: 100%; /* Allows it to fluidly shrink */
+    max-width: 450px; /* Prevents it from getting too massive on desktop */
+    overflow: hidden;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+#display {
+    width: 100%;
+    padding: 30px 20px; /* Adjusted padding */
+    font-size: 4rem; /* Slightly reduced base size to prevent overflow */
+    text-align: right; 
+    border: none;
+    background-color: #615a5a;
+    color: white;
+    box-sizing: border-box; 
+    overflow-x: auto; /* Adds a scrollbar if the number gets insanely long */
+}
+
+#keys {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px; /* Marginally increased for better spacing */
+    padding: 20px;
+}
+
+button {
+    width: 100%; /* Spans the full width of its grid column */
+    aspect-ratio: 1 / 1; /* Magic trick: keeps buttons perfectly circular while being fluid */
+    border-radius: 50%; 
+    border: none;
+    background-color: rgba(42, 29, 158, 0.315);
+    color: white;
+    font-size: 2.2rem; /* Fluid scaling starter size */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* Makes hovers smoother */
+}
+
+button:hover {
+    background-color: rgba(42, 29, 158, 0.5);
+}
+
+button:active {
+    background-color: rgba(42, 29, 158, 0.7);
+}
+
+.operator-btn {
+    background-color: rgb(243, 247, 8);
+    color: black; 
+}
+
+.operator-btn:hover {
+    background-color: rgba(243, 247, 8, 0.8);
+}
+
+.operator-btn:active {
+    background-color: rgba(159, 161, 5, 0.7);
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+/* For Tablets and Small Desktops (e.g., iPads, smaller laptops) */
+@media (min-width: 481px) {
+    #display {
+        font-size: 4.5rem;
+        padding: 40px 25px;
+    }
+    button {
+        font-size: 2.5rem;
+    }
+    #keys {
+        gap: 15px;
+        padding: 25px;
+    }
+}
+
+/* For Mobile Devices (e.g., iPhone, Android screens under 480px width) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Gives maximum room for the UI */
+    }
+    
+    .calculator {
+        max-width: 100%; /* Pulls fully to the edges if screen is tiny */
+    }
+
+    #display {
+        font-size: 3rem; /* Prevents large numbers from cutting off */
+        padding: 25px 15px;
+    }
+
+    #keys {
+        gap: 8px; /* Tighter gaps so buttons don't clip */
+        padding: 15px;
+    }
+
+    button {
+        font-size: 1.8rem; /* Keeps the text inside the shrinking circles */
+    }
+}
+
+/* Edge Case: For extra tiny screens or foldables (widths under 340px) */
+@media (max-width: 340px) {
+    #display {
+        font-size: 2.2rem;
+    }
+    button {
+        font-size: 1.4rem;
+    }
+}
